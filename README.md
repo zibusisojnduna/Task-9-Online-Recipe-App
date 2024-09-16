@@ -11,7 +11,7 @@ Clone the project
 ```
 Go to the project directory
 ```bash
-  cd Online-Recipe-App
+  cd Task-9-Online-Recipe-App
 ```
 Install dependencies
 ```bash
