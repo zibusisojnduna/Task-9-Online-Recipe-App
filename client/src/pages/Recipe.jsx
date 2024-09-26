@@ -5,6 +5,7 @@ import Card from "../components/card"
 function Recipe(){
     const [recipes, setRecipes] = useState([])
     const [categories] = useState(["breakfast", "lunch", "dinner", "dessert"])
+    const [searchTerm, setSearchTerm] = useState()
 
     useEffect(() => {
         const fetchRecipies = async () => {
@@ -13,8 +14,19 @@ function Recipe(){
         }
         fetchRecipies()
     }, [])
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value.toLowerCase())
+    }
+
+    const filteredRecipes = recipes.filter(recipe => 
+        recipe.title.toLowerCase().includes(searchTerm)
+    )
+
     return(
-        <section style={{display:"flex"}}>
+        <section>
+            <input type="text" placeholder="Search for a recipe" value={searchTerm} onChange={handleSearchChange} style={{padding:"2%", marginBottom:"2%", border:"2% solid black", borderRadius:"5px", width:"100%"}}></input>
+            <button onClick={() => setSearchTerm()}>Clear</button>
             <h1>Recipes</h1>
             <div>
                 <h1>Breakfast</h1>
